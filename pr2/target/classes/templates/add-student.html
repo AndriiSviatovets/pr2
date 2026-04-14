@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Student</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <style>
+        .error { color: red; font-size: 0.9em; }
+    </style>
+</head>
+<body>
+    <h2>Додати студента</h2>
+    <form th:action="@{/students/add}" th:object="${student}" method="post">
+        
+        <div>
+            Ім'я: <input type="text" th:field="*{name}" />
+            <span class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Помилка імені</span>
+        </div>
+        <br>
+        
+        <div>
+            Вік: <input type="number" th:field="*{age}" />
+            <span class="error" th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Помилка віку</span>
+        </div>
+        <br>
+        
+        <div>
+            Email: <input type="text" th:field="*{email}" />
+            <span class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Помилка email</span>
+        </div>
+        <br>
+
+        <div>
+            Деталі: <input type="text" th:field="*{details}" />
+        </div>
+        <br>
+
+        <button type="submit">Зберегти</button>
+    </form>
+    <br>
+    <a href="/students">Назад до списку</a>
+</body>
+</html>

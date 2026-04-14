@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Students List</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <h2>Список студентів</h2>
+    <a href="/students/add">Додати студента</a>
+    <br><br>
+
+    <form th:action="@{/students}" method="get" style="margin-bottom: 20px;">
+        <input type="text" name="keyword" th:value="${keyword}" placeholder="Пошук за ім'ям, email або ID..." size="40" />
+        <button type="submit">Шукати</button>
+        <a th:href="@{/students}"><button type="button">Скинути</button></a>
+    </form>
+
+    <table border="1" style="width:auto; text-align: left;">
+        <tr>
+            <th>Ім'я</th>
+            <th>Вік</th>
+            <th>Email</th>
+            <th>Дії</th>
+        </tr>
+        <tr th:each="student : ${students}">
+            <td th:text="${student.name}"></td>
+            <td th:text="${student.age}"></td>
+            <td th:text="${student.email}"></td>
+            <td>
+                <a th:href="@{/students/edit/{id}(id=${student.id})}">Редагувати</a> | 
+                <a th:href="@{/students/delete/{id}(id=${student.id})}" onclick="return confirm('Ви впевнені, що хочете видалити цього студента?');">Видалити</a> |
+                <a th:href="@{/students/details/{id}(id=${student.id})}">Деталі</a>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

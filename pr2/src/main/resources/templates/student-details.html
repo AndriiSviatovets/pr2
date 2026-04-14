@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Student Details</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <h2>Деталі студента: <span th:text="${student.name}"></span></h2>
+    <br>
+    <ul>
+        <li><strong>ID:</strong> <span th:text="${student.id}"></span></li>
+        <li><strong>Ім'я:</strong> <span th:text="${student.name}"></span></li>
+        <li><strong>Вік:</strong> <span th:text="${student.age}"></span></li>
+        <li><strong>Email:</strong> <span th:text="${student.email}"></span></li>
+        <li><strong>Додатково:</strong> <span th:text="${student.details}"></span></li>
+    </ul>
+
+    <br>
+    <a href="/students">Назад до списку</a>
+</body>
+</html>
